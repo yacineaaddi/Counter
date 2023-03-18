@@ -11,7 +11,7 @@ contract Firsttoken is  ERC20Capped, Ownable{
 
     /*uint256 public blockreward = (10) * (10 ** uint(decimals()));*/
 
-    constructor () ERC20 ( "FaucetToken" , "FTS" ) ERC20Capped ( 10000000000000000 * 10** uint(decimals())) {
+    constructor () ERC20 ( "Reawards" , "RDS" ) ERC20Capped ( 10000000000000000 * 10** uint(decimals())) {
     
         _mint(payable(msg.sender), 100000000 * 10 ** uint(decimals()));
         
