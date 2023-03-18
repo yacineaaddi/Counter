@@ -11,23 +11,24 @@ contract Firsttoken is  ERC20Capped, Ownable{
 
     /*uint256 public blockreward = (10) * (10 ** uint(decimals()));*/
 
-    constructor () ERC20 ( "Rewards" , "CCC" ) ERC20Capped ( 10000000000000000 * 10** uint(decimals())) {
-
-        _mint(payable(msg.sender), 10000 * 10 ** uint(decimals()));
+    constructor (uint256 cap, uint256 Supply) ERC20 ( "FaucetToken" , "OOO" ) ERC20Capped ( cap * 10** uint(decimals())) {
+    
+        _mint(payable(msg.sender), Supply * 10 ** uint(decimals()));
+        
     }
+
+    /*function _MintMinerReward() internal {
+        _mint(block.coinbase, blockreward);}*/
+
+
+    function _MintToken(address account, uint256 amount) public {
+        _mint(payable(account), amount * 10 ** uint(decimals()));
+    }
+
 
     function _beforeTokenTransfer(address from , address to , uint256 value) internal virtual override{
         if(from != address(0) && to != block.coinbase && block.coinbase != address(0)){
         /*_MintMinerReward();*/
         }
         super._beforeTokenTransfer(from , to , value);
-     }
-
-
-    function _mint(address account, uint256 amount) internal virtual override(ERC20Capped) {
-        require(ERC20.totalSupply() + amount <= cap(), "You could not mint more");
-        super._mint(payable(account), amount * 10 ** uint(decimals()));
-    }
-
-    
-}
+     }}
