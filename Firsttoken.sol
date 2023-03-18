@@ -11,7 +11,7 @@ contract Firsttoken is  ERC20Capped, Ownable{
 
     /*uint256 public blockreward = (10) * (10 ** uint(decimals()));*/
 
-    constructor () ERC20 ( "Rewards" , "XXX" ) ERC20Capped ( 10000000000000000 * 10** uint(decimals())) {
+    constructor () ERC20 ( "Rewards" , "CCC" ) ERC20Capped ( 10000000000000000 * 10** uint(decimals())) {
 
         _mint(payable(msg.sender), 10000 * 10 ** uint(decimals()));
     }
