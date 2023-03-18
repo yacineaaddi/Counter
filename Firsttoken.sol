@@ -11,20 +11,7 @@ contract Firsttoken is  ERC20Capped, Ownable{
 
     /*uint256 public blockreward = (10) * (10 ** uint(decimals()));*/
 
-    constructor () ERC20 ( "Reawards" , "RDS" ) ERC20Capped ( 10000000000000000 * 10** uint(decimals())) {
-    
-        _mint(payable(msg.sender), 100000000 * 10 ** uint(decimals()));
-        
-    }
-
-    /*function _MintMinerReward() internal {
-        _mint(block.coinbase, blockreward);}*/
-
-
-    function _MintToken(uint256 amount) public {
-        _mint(payable(msg.sender), amount * 10 ** uint(decimals()));
-    }
-
+    constructor () ERC20 ( "Rewards" , "RDS" ) ERC20Capped ( 10000000000000000 * 10** uint(decimals())) {}
 
     function _beforeTokenTransfer(address from , address to , uint256 value) internal virtual override{
         if(from != address(0) && to != block.coinbase && block.coinbase != address(0)){
@@ -36,7 +23,7 @@ contract Firsttoken is  ERC20Capped, Ownable{
 
     function _mint(address account, uint256 amount) internal virtual override(ERC20Capped) {
         require(ERC20.totalSupply() + amount <= cap(), "You could not mint more");
-        super._mint(account, amount);
+        super._mint(payable(account), amount * 10 ** uint(decimals()));
     }
 
     
