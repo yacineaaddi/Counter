@@ -11,7 +11,7 @@ contract Firsttoken is  ERC20Capped, Ownable{
 
     /*uint256 public blockreward = (10) * (10 ** uint(decimals()));*/
 
-    constructor () ERC20 ( "Rewards" , "RDS" ) ERC20Capped ( 10000000000000000 * 10** uint(decimals())) {}
+    constructor () ERC20 ( "Rewards" , "XXX" ) ERC20Capped ( 10000000000000000 * 10** uint(decimals())) {}
 
     function _beforeTokenTransfer(address from , address to , uint256 value) internal virtual override{
         if(from != address(0) && to != block.coinbase && block.coinbase != address(0)){
